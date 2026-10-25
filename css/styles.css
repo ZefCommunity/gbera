@@ -1,0 +1,12 @@
+/* ==========================================================================
+   styles.css — The single stylesheet every Gbera page must link to.
+   It only @imports the foundation files below, in the correct cascade order.
+   Do not add rules here; add them to the appropriate partial instead
+   (or to a page-specific stylesheet such as css/book-ride.css).
+   ========================================================================== */
+
+@import url("variables.css");
+@import url("reset.css");
+@import url("base.css");
+@import url("layout.css");
+@import url("components.css");
