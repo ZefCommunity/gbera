@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Driver Dashboard — Gbera</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/auth.css">
+</head>
+<body>
+  <div id="gbera-navbar"></div>
+
+  <main class="auth-dashboard">
+    <div class="auth-dashboard__card" id="dashboard-card">
+      <div class="auth-dashboard__avatar" id="dash-avatar" aria-hidden="true">D</div>
+      <h1 class="auth-title">Welcome, <span id="dash-name">Driver</span></h1>
+      <p class="auth-subtitle">You are signed in as a driver.</p>
+      <p class="text-muted" id="dash-email"></p>
+      <div class="mt-6">
+        <button type="button" class="btn btn-outline" id="dash-logout">Log out</button>
+      </div>
+    </div>
+  </main>
+
+  <div id="gbera-footer"></div>
+
+  <script src="../js/utils.js"></script>
+  <script src="../js/components.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/authService.js"></script>
+  <script src="../js/authValidation.js"></script>
+  <script src="../js/auth.js"></script>
+</body>
+</html>
