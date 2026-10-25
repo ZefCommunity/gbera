@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up — Gbera</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/auth.css">
+</head>
+<body>
+  <div id="gbera-navbar"></div>
+
+  <main class="auth-page">
+    <div class="auth-card" style="max-width:560px;">
+      <div class="auth-brand">
+        <div class="auth-brand__logo" aria-hidden="true">G</div>
+        <h1 class="auth-title">Create your account</h1>
+        <p class="auth-subtitle">Join Gbera as a rider or driver</p>
+      </div>
+
+      <div class="auth-tabs" role="tablist" aria-label="Account type">
+        <button type="button" class="auth-tab" data-signup-tab="rider" aria-selected="true" role="tab">Rider</button>
+        <button type="button" class="auth-tab" data-signup-tab="driver" aria-selected="false" role="tab">Driver</button>
+      </div>
+
+      <div id="panel-rider" class="auth-view">
+        <div id="rider-alert" class="auth-alert" role="alert" hidden></div>
+        <form id="form-rider" class="auth-form" novalidate>
+          <div class="form-group">
+            <label class="form-label" for="rider-fullName">Full name</label>
+            <input class="form-input" id="rider-fullName" name="fullName" type="text" autocomplete="name" required aria-required="true" aria-describedby="rider-fullName-error">
+            <span class="auth-error" data-error-for="fullName" id="rider-fullName-error" role="alert" aria-live="polite"></span>
+          </div>
+
+          <div class="auth-field-row auth-field-row--2">
+            <div class="form-group">
+              <label class="form-label" for="rider-email">Email</label>
+              <input class="form-input" id="rider-email" name="email" type="email" inputmode="email" autocomplete="email" required aria-required="true" aria-describedby="rider-email-error">
+              <span class="auth-error" data-error-for="email" id="rider-email-error" role="alert" aria-live="polite"></span>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="rider-phone">Phone number</label>
+              <input class="form-input" id="rider-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required aria-required="true" aria-describedby="rider-phone-error">
+              <span class="auth-error" data-error-for="phone" id="rider-phone-error" role="alert" aria-live="polite"></span>
+            </div>
+          </div>
+
+
+          <div class="form-group">
+            <label class="form-label" for="rider-password">Password</label>
+            <div class="auth-input-wrap">
+              <input class="form-input" id="rider-password" name="password" type="password" autocomplete="new-password" required aria-required="true" aria-describedby="rider-password-error">
+              <button type="button" class="auth-toggle-pw" data-target="rider-password" aria-label="Show password">Show</button>
+            </div>
+            <span class="auth-error" data-error-for="password" id="rider-password-error" role="alert" aria-live="polite"></span>
+            <div class="auth-strength" aria-hidden="true">
+              <div class="auth-strength__bar"><div class="auth-strength__fill"></div></div>
+              <div class="auth-strength__label">Strength: weak</div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="rider-confirmPassword">Confirm password</label>
+            <div class="auth-input-wrap">
+              <input class="form-input" id="rider-confirmPassword" name="confirmPassword" type="password" autocomplete="new-password" required aria-required="true" aria-describedby="rider-confirmPassword-error">
+              <button type="button" class="auth-toggle-pw" data-target="rider-confirmPassword" aria-label="Show password">Show</button>
+            </div>
+            <span class="auth-error" data-error-for="confirmPassword" id="rider-confirmPassword-error" role="alert" aria-live="polite"></span>
+          </div>
+
+          <div class="form-group auth-checkbox-row">
+            <input type="checkbox" id="rider-terms" name="terms" required aria-required="true" aria-describedby="rider-terms-error">
+            <label for="rider-terms">I accept the terms and conditions</label>
+          </div>
+          <span class="auth-error" data-error-for="terms" id="rider-terms-error" role="alert" aria-live="polite"></span>
+
+          <button type="submit" class="btn btn-primary btn-block" id="rider-submit">Create rider account</button>
+        </form>
+      </div>
+
+      <div id="panel-driver" class="auth-view" hidden>
+        <div id="driver-alert" class="auth-alert" role="alert" hidden></div>
+        <form id="form-driver" class="auth-form" novalidate>
+          <div class="form-group">
+            <label class="form-label" for="driver-fullName">Full name</label>
+            <input class="form-input" id="driver-fullName" name="fullName" type="text" autocomplete="name" required aria-required="true" aria-describedby="driver-fullName-error">
+            <span class="auth-error" data-error-for="fullName" id="driver-fullName-error" role="alert" aria-live="polite"></span>
+          </div>
+
+          <div class="auth-field-row auth-field-row--2">
+            <div class="form-group">
+              <label class="form-label" for="driver-email">Email</label>
+              <input class="form-input" id="driver-email" name="email" type="email" inputmode="email" autocomplete="email" required aria-required="true" aria-describedby="driver-email-error">
+              <span class="auth-error" data-error-for="email" id="driver-email-error" role="alert" aria-live="polite"></span>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="driver-phone">Phone number</label>
+              <input class="form-input" id="driver-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required aria-required="true" aria-describedby="driver-phone-error">
+              <span class="auth-error" data-error-for="phone" id="driver-phone-error" role="alert" aria-live="polite"></span>
+            </div>
+          </div>
+
+
+          <div class="form-group">
+            <label class="form-label" for="driver-password">Password</label>
+            <div class="auth-input-wrap">
+              <input class="form-input" id="driver-password" name="password" type="password" autocomplete="new-password" required aria-required="true" aria-describedby="driver-password-error">
+              <button type="button" class="auth-toggle-pw" data-target="driver-password" aria-label="Show password">Show</button>
+            </div>
+            <span class="auth-error" data-error-for="password" id="driver-password-error" role="alert" aria-live="polite"></span>
+            <div class="auth-strength" aria-hidden="true">
+              <div class="auth-strength__bar"><div class="auth-strength__fill"></div></div>
+              <div class="auth-strength__label">Strength: weak</div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="driver-confirmPassword">Confirm password</label>
+            <div class="auth-input-wrap">
+              <input class="form-input" id="driver-confirmPassword" name="confirmPassword" type="password" autocomplete="new-password" required aria-required="true" aria-describedby="driver-confirmPassword-error">
+              <button type="button" class="auth-toggle-pw" data-target="driver-confirmPassword" aria-label="Show password">Show</button>
+            </div>
+            <span class="auth-error" data-error-for="confirmPassword" id="driver-confirmPassword-error" role="alert" aria-live="polite"></span>
+          </div>
+
+          <div class="auth-field-row auth-field-row--2">
+            <div class="form-group">
+              <label class="form-label" for="driver-licenceNumber">Driver's licence number</label>
+              <input class="form-input" id="driver-licenceNumber" name="licenceNumber" type="text" required aria-required="true" aria-describedby="driver-licenceNumber-error">
+              <span class="auth-error" data-error-for="licenceNumber" id="driver-licenceNumber-error" role="alert" aria-live="polite"></span>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="driver-vehicleYear">Vehicle year</label>
+              <input class="form-input" id="driver-vehicleYear" name="vehicleYear" type="number" inputmode="numeric" min="1980" required aria-required="true" aria-describedby="driver-vehicleYear-error">
+              <span class="auth-error" data-error-for="vehicleYear" id="driver-vehicleYear-error" role="alert" aria-live="polite"></span>
+            </div>
+          </div>
+
+          <div class="auth-field-row auth-field-row--2">
+            <div class="form-group">
+              <label class="form-label" for="driver-vehicleMake">Vehicle make</label>
+              <input class="form-input" id="driver-vehicleMake" name="vehicleMake" type="text" required aria-required="true" aria-describedby="driver-vehicleMake-error">
+              <span class="auth-error" data-error-for="vehicleMake" id="driver-vehicleMake-error" role="alert" aria-live="polite"></span>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="driver-vehicleModel">Vehicle model</label>
+              <input class="form-input" id="driver-vehicleModel" name="vehicleModel" type="text" required aria-required="true" aria-describedby="driver-vehicleModel-error">
+              <span class="auth-error" data-error-for="vehicleModel" id="driver-vehicleModel-error" role="alert" aria-live="polite"></span>
+            </div>
+          </div>
+
+          <div class="auth-field-row auth-field-row--2">
+            <div class="form-group">
+              <label class="form-label" for="driver-plateNumber">Plate number</label>
+              <input class="form-input" id="driver-plateNumber" name="plateNumber" type="text" required aria-required="true" aria-describedby="driver-plateNumber-error">
+              <span class="auth-error" data-error-for="plateNumber" id="driver-plateNumber-error" role="alert" aria-live="polite"></span>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="driver-vehicleColour">Vehicle colour</label>
+              <input class="form-input" id="driver-vehicleColour" name="vehicleColour" type="text" required aria-required="true" aria-describedby="driver-vehicleColour-error">
+              <span class="auth-error" data-error-for="vehicleColour" id="driver-vehicleColour-error" role="alert" aria-live="polite"></span>
+            </div>
+          </div>
+
+
+          <div class="form-group">
+            <label class="form-label" for="driver-licenceDoc">Licence document (JPG/PNG/PDF, max 5MB)</label>
+            <div class="auth-file">
+              <input class="form-input" id="driver-licenceDoc" name="licenceDoc" type="file" accept="image/jpeg,image/png,application/pdf" required aria-required="true" aria-describedby="driver-licenceDoc-error">
+              <div class="auth-file__preview">
+                <span class="auth-file__name">No file selected</span>
+              </div>
+              <span class="auth-error" data-error-for="licenceDoc" id="driver-licenceDoc-error" role="alert" aria-live="polite"></span>
+            </div>
+          </div>
+
+          <div class="form-group auth-checkbox-row">
+            <input type="checkbox" id="driver-terms" name="terms" required aria-required="true" aria-describedby="driver-terms-error">
+            <label for="driver-terms">I accept the terms and conditions</label>
+          </div>
+          <span class="auth-error" data-error-for="terms" id="driver-terms-error" role="alert" aria-live="polite"></span>
+
+          <button type="submit" class="btn btn-primary btn-block" id="driver-submit">Create driver account</button>
+        </form>
+      </div>
+
+      <div class="auth-divider"><span>or</span></div>
+      <div class="auth-links">
+        Already have an account? <a href="auth.html">Log in</a>
+      </div>
+    </div>
+  </main>
+
+  <div id="gbera-footer"></div>
+
+  <script src="../js/utils.js"></script>
+  <script src="../js/components.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/authService.js"></script>
+  <script src="../js/authValidation.js"></script>
+  <script src="../js/auth.js"></script>
+</body>
+</html>

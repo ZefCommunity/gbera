@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login — Gbera</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/auth.css">
+</head>
+<body>
+  <div id="gbera-navbar"></div>
+
+  <main class="auth-page">
+    <div class="auth-card">
+      <div class="auth-brand">
+        <div class="auth-brand__logo" aria-hidden="true">G</div>
+        <h1 class="auth-title">Welcome back</h1>
+        <p class="auth-subtitle">Log in to your Gbera account</p>
+      </div>
+
+      <div class="auth-role-selector" role="group" aria-label="Select role">
+        <button type="button" class="auth-role-btn" data-role-btn data-role="rider" aria-pressed="true">Rider</button>
+        <button type="button" class="auth-role-btn" data-role-btn data-role="driver" aria-pressed="false">Driver</button>
+      </div>
+
+      <div id="login-alert" class="auth-alert" role="alert" hidden></div>
+
+      <form id="login-form" class="auth-form" novalidate>
+        <div class="form-group">
+          <label class="form-label" for="login-identifier">Email or phone</label>
+          <input class="form-input" id="login-identifier" name="identifier" type="text" inputmode="email" autocomplete="username" required aria-required="true" aria-describedby="login-identifier-error">
+          <span class="auth-error" id="login-identifier-error" role="alert" aria-live="polite"></span>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="login-password">Password</label>
+          <div class="auth-input-wrap">
+            <input class="form-input" id="login-password" name="password" type="password" autocomplete="current-password" required aria-required="true" aria-describedby="login-password-error">
+            <button type="button" class="auth-toggle-pw" id="login-toggle-pw" aria-label="Show password">Show</button>
+          </div>
+          <span class="auth-error" id="login-password-error" role="alert" aria-live="polite"></span>
+        </div>
+
+        <div class="form-group auth-checkbox-row">
+          <input type="checkbox" id="login-remember" name="remember">
+          <label for="login-remember">Remember me</label>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block" id="login-submit">Log in</button>
+      </form>
+
+      <div class="auth-divider"><span>or</span></div>
+      <div class="auth-links">
+        <a href="forgot-password.html">Forgot password?</a>
+        &nbsp;&middot;&nbsp;
+        <a href="signup.html">Create an account</a>
+      </div>
+    </div>
+  </main>
+
+  <div id="gbera-footer"></div>
+
+  <script src="../js/utils.js"></script>
+  <script src="../js/components.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/authService.js"></script>
+  <script src="../js/authValidation.js"></script>
+  <script src="../js/auth.js"></script>
+</body>
+</html>
