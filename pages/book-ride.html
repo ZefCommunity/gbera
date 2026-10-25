@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book a Ride — Gbera</title>
+  <meta name="description" content="Book a ride with Gbera. Enter pickup and destination, choose Economy, Comfort or Bike, and get an instant fare estimate.">
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/book-ride.css">
+</head>
+<body>
+  <div id="gbera-navbar"></div>
+
+  <main>
+    <section class="br-hero section--sm">
+      <div class="container">
+        <h1 class="br-hero__title">Book a Ride</h1>
+        <p class="br-hero__subtitle">
+          Tell us where you're going, pick a ride that fits your budget, and see your fare before you confirm.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="grid md:grid--2 gap-6">
+          <div class="flex flex-col gap-6">
+            <div class="card">
+              <div class="card-header">Trip details</div>
+              <div class="card-body">
+                <form id="book-ride-form" novalidate>
+                  <div class="form-group">
+                    <label class="form-label form-label--required" for="pickup">Pickup location</label>
+                    <div class="input-icon">
+                      <span class="input-icon__icon" aria-hidden="true">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M12 2v3M12 19v3M2 12h3M19 12h3"></path></svg>
+                      </span>
+                      <input class="form-input" type="text" id="pickup" name="pickup" placeholder="Enter pickup address" autocomplete="off" required>
+                    </div>
+                    <span class="form-hint">Where should the driver pick you up?</span>
+                  </div>
+
+                  <div class="br-connector">
+                    <span class="br-connector__dot" aria-hidden="true"></span>
+                    <span class="br-connector__line" aria-hidden="true"></span>
+                    <span class="br-connector__dot" aria-hidden="true"></span>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label form-label--required" for="destination">Destination</label>
+                    <div class="input-icon">
+                      <span class="input-icon__icon" aria-hidden="true">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                      </span>
+                      <input class="form-input" type="text" id="destination" name="destination" placeholder="Enter destination address" autocomplete="off" required>
+                    </div>
+                    <span class="form-hint">Where are you headed?</span>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label" for="notes">Trip notes (optional)</label>
+                    <textarea class="form-textarea" id="notes" name="notes" placeholder="e.g. gate code, landmark, preferred route" rows="3"></textarea>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <div class="map-placeholder br-map" role="img" aria-label="Map showing your route">
+              <div>
+                <strong>Route preview</strong><br>
+                Map will appear here once pickup &amp; destination are set.
+              </div>
+            </div>
+          </div>
+
+          <div class="flex flex-col gap-6">
+            <div class="card">
+              <div class="card-header">Choose a ride</div>
+              <div class="card-body">
+                <fieldset class="br-ride-types" aria-label="Ride type">
+                  <legend class="sr-only">Select ride type</legend>
+
+                  <label class="br-ride-type">
+                    <input type="radio" name="rideType" value="bike" checked>
+                    <span class="br-ride-type__card">
+                      <span class="br-ride-type__icon" aria-hidden="true">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5.5" cy="17.5" r="3.5"></circle><circle cx="18.5" cy="17.5" r="3.5"></circle><path d="M15 6a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-3 11.5V14l-3-3 4-3 2 3h2"></path></svg>
+                      </span>
+                      <span class="br-ride-type__name">Bike</span>
+                      <span class="br-ride-type__meta">Fastest for solo trips. Helmet included.</span>
+                      <span class="br-ride-type__price">From ₦300</span>
+                    </span>
+                  </label>
+
+                  <label class="br-ride-type">
+                    <input type="radio" name="rideType" value="economy">
+                    <span class="br-ride-type__card">
+                      <span class="br-ride-type__icon" aria-hidden="true">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 16H9m10 0h3v-3.15a1 1 0 0 0-.84-.99L18 11l-2.7-3.6a1 1 0 0 0-.8-.4H9.5a1 1 0 0 0-.8.4L6 11l-3.16.86a1 1 0 0 0-.84.99V16h2m5 0h2"></path><circle cx="7.5" cy="16.5" r="2.5"></circle><circle cx="17.5" cy="16.5" r="2.5"></circle></svg>
+                      </span>
+                      <span class="br-ride-type__name">Economy</span>
+                      <span class="br-ride-type__meta">Affordable everyday rides. Up to 4 seats.</span>
+                      <span class="br-ride-type__price">From ₦500</span>
+                    </span>
+                  </label>
+
+                  <label class="br-ride-type">
+                    <input type="radio" name="rideType" value="comfort">
+                    <span class="br-ride-type__card">
+                      <span class="br-ride-type__icon" aria-hidden="true">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l18-5v12L3 13v-2z"></path><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"></path></svg>
+                      </span>
+                      <span class="br-ride-type__name">Comfort</span>
+                      <span class="br-ride-type__meta">Newer cars, extra legroom. Up to 4 seats.</span>
+                      <span class="br-ride-type__price">From ₦800</span>
+                    </span>
+                  </label>
+                </fieldset>
+              </div>
+            </div>
+
+            <div class="br-fare" id="fare-estimate" aria-live="polite">
+              <div class="br-fare__header">
+                <h3 class="mb-0">Fare estimate</h3>
+                <span class="badge badge-neutral" id="fare-badge">Awaiting details</span>
+              </div>
+
+              <div class="br-fare__empty" id="fare-empty">
+                <div class="br-fare__icon" aria-hidden="true">₦</div>
+                <p class="mb-0">Enter pickup and destination to see your estimated fare.</p>
+              </div>
+
+              <div id="fare-details" hidden>
+                <div class="card-body text-center" style="padding: var(--space-6) var(--space-5);">
+                  <div class="br-fare__amount" id="fare-amount">₦0.00</div>
+                  <p class="text-muted text-sm mt-2 mb-0" id="fare-type-label">Economy ride</p>
+                </div>
+                <div class="br-fare__row">
+                  <span class="br-fare__label">Distance</span>
+                  <span class="br-fare__value" id="fare-distance">—</span>
+                </div>
+                <div class="br-fare__row">
+                  <span class="br-fare__label">Estimated time</span>
+                  <span class="br-fare__value" id="fare-eta">—</span>
+                </div>
+                <div class="br-fare__row">
+                  <span class="br-fare__label">Base fare</span>
+                  <span class="br-fare__value" id="fare-base">—</span>
+                </div>
+                <div class="br-fare__row">
+                  <span class="br-fare__label">Per km</span>
+                  <span class="br-fare__value" id="fare-rate">—</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="br-actions">
+              <button type="button" class="btn btn-primary btn-lg" id="estimate-btn">
+                Get fare estimate
+              </button>
+              <button type="button" class="btn btn-secondary btn-lg" id="book-btn" disabled>
+                Book ride
+              </button>
+            </div>
+            <p class="text-muted text-sm" id="form-status" role="status" aria-live="polite"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="gbera-footer"></div>
+
+  <div class="modal-backdrop" data-modal-backdrop="booking-modal"></div>
+  <div class="modal" id="booking-modal" aria-hidden="true" role="dialog" aria-labelledby="booking-modal-title">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="booking-modal-title">Ride booked!</h3>
+      </div>
+      <div class="modal-body br-confirm">
+        <div class="br-confirm__icon" aria-hidden="true">✓</div>
+        <p>Your <strong id="confirm-type">Economy</strong> ride has been requested.</p>
+        <p class="text-muted text-sm" id="confirm-details">Estimated fare: ₦0.00</p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary btn-block" data-modal-close>Done</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="../js/utils.js"></script>
+  <script src="../js/components.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/book-ride.js"></script>
+</body>
+</html>
+

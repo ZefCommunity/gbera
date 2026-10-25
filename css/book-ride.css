@@ -1,0 +1,258 @@
+/* ==========================================================================
+   book-ride.css — Page-specific styles for the Book a Ride page.
+   Builds on the shared foundation (css/styles.css). Uses design tokens.
+   ========================================================================== */
+
+/* ---------- Page hero ---------- */
+.br-hero {
+  background: linear-gradient(135deg, var(--color-primary-50) 0%, var(--color-accent-50) 100%);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.br-hero__title {
+  margin-bottom: var(--space-2);
+}
+
+.br-hero__subtitle {
+  color: var(--color-text-muted);
+  max-width: 640px;
+}
+
+/* ---------- Trip form ---------- */
+.br-trip {
+  position: relative;
+}
+
+.br-swap {
+  position: absolute;
+  right: var(--space-3);
+  top: 50%;
+  transform: translateY(-50%);
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-primary);
+  cursor: pointer;
+  box-shadow: var(--shadow-xs);
+  transition: background-color var(--transition-fast), transform var(--transition-fast);
+  z-index: 2;
+}
+
+.br-swap:hover {
+  background-color: var(--color-primary-light);
+  transform: translateY(-50%) rotate(180deg);
+}
+
+.br-connector {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-1);
+  margin: var(--space-2) 0;
+  color: var(--color-neutral-400);
+}
+
+.br-connector__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: var(--radius-full);
+  border: 2px solid var(--color-primary);
+  background-color: var(--color-surface);
+}
+
+.br-connector__line {
+  width: 2px;
+  height: 24px;
+  background-color: var(--color-border);
+}
+
+/* ---------- Ride type selector ---------- */
+.br-ride-types {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-3);
+}
+
+@media (min-width: 640px) {
+  .br-ride-types {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.br-ride-type {
+  position: relative;
+  display: block;
+  cursor: pointer;
+}
+
+.br-ride-type input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+.br-ride-type__card {
+  height: 100%;
+  padding: var(--space-4);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background-color: var(--color-surface);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast),
+    background-color var(--transition-fast), transform var(--transition-fast);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.br-ride-type:hover .br-ride-type__card {
+  border-color: var(--color-primary-300);
+  transform: translateY(-2px);
+}
+
+.br-ride-type input[type="radio"]:checked + .br-ride-type__card {
+  border-color: var(--color-primary);
+  background-color: var(--color-primary-50);
+  box-shadow: 0 0 0 3px var(--color-primary-light);
+}
+
+.br-ride-type input[type="radio"]:focus-visible + .br-ride-type__card {
+  box-shadow: 0 0 0 3px var(--color-primary-light);
+}
+
+.br-ride-type__icon {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-neutral-100);
+  color: var(--color-primary);
+  font-size: var(--font-size-xl);
+}
+
+.br-ride-type__name {
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-md);
+}
+
+.br-ride-type__meta {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+.br-ride-type__price {
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+  margin-top: auto;
+}
+
+/* ---------- Fare estimate ---------- */
+.br-fare {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background-color: var(--color-surface);
+  overflow: hidden;
+}
+
+.br-fare__header {
+  padding: var(--space-4) var(--space-5);
+  border-bottom: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.br-fare__amount {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-extrabold);
+  color: var(--color-primary);
+  line-height: 1;
+}
+
+.br-fare__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-3) var(--space-5);
+  border-top: 1px solid var(--color-border);
+  font-size: var(--font-size-sm);
+}
+
+.br-fare__row:first-of-type {
+  border-top: none;
+}
+
+.br-fare__label {
+  color: var(--color-text-muted);
+}
+
+.br-fare__value {
+  font-weight: var(--font-weight-semibold);
+}
+
+.br-fare__empty {
+  padding: var(--space-8) var(--space-5);
+  text-align: center;
+  color: var(--color-text-muted);
+}
+
+.br-fare__empty .br-fare__icon {
+  font-size: var(--font-size-3xl);
+  margin-bottom: var(--space-3);
+  color: var(--color-neutral-300);
+}
+
+/* ---------- Map placeholder tweak ---------- */
+.br-map {
+  min-height: 200px;
+}
+
+/* ---------- Sticky action bar on mobile ---------- */
+.br-actions {
+  display: flex;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+@media (max-width: 639px) {
+  .br-actions .btn {
+    flex: 1 1 auto;
+  }
+}
+
+/* ---------- Booking confirmation ---------- */
+.br-confirm {
+  text-align: center;
+}
+
+.br-confirm__icon {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto var(--space-4);
+  border-radius: var(--radius-full);
+  background-color: var(--color-success-light);
+  color: var(--color-success);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-size-2xl);
+}
+
+/* Positioning contexts for swap button */
+.br-connector {
+  position: relative;
+}
+
+#book-ride-form {
+  position: relative;
+}
+
