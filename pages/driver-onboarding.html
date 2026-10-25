@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Become a Gbera Driver | Gbera</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/driver-onboarding.css">
+</head>
+<body>
+  <div id="gbera-navbar"></div>
+  <main class="driver-page">
+    <section class="driver-hero">
+      <div class="container">
+        <div class="driver-hero__inner">
+          <span class="driver-hero__badge">Drive with Gbera</span>
+          <h1>Become a Gbera Driver</h1>
+          <p class="driver-hero__lead">Join thousands of drivers earning on their own schedule. Complete the form below to submit your driver application. All fields are required unless marked optional.</p>
+          <p class="driver-hero__note"><strong>Note:</strong> This page validates your details in your browser only. No information is sent to or stored on a server because no backend is connected yet.</p>
+        </div>
+      </div>
+    </section>
+    <section class="driver-form-section">
+      <div class="container container--md">
+        <form id="driver-form" class="driver-form" novalidate>
+          <fieldset class="driver-card" id="driver-personal">
+            <legend class="driver-card__title">Personal Information</legend>
+            <div class="driver-grid driver-grid--2">
+              <div class="form-group">
+                <label class="form-label form-label--required" for="driver-full-name">Full name</label>
+                <input class="form-input" type="text" id="driver-full-name" name="fullName" autocomplete="name" placeholder="e.g. Ada Obi" required>
+                <span class="form-error" id="driver-full-name-error" aria-live="polite"></span>
+              </div>
+              <div class="form-group">
+                <label class="form-label form-label--required" for="driver-email">Email address</label>
+                <input class="form-input" type="email" id="driver-email" name="email" autocomplete="email" placeholder="you@example.com" required>
+                <span class="form-error" id="driver-email-error" aria-live="polite"></span>
+              </div>
+              <div class="form-group">
+                <label class="form-label form-label--required" for="driver-phone">Phone number</label>
+                <input class="form-input" type="tel" id="driver-phone" name="phone" autocomplete="tel" placeholder="08012345678" required>
+                <span class="form-hint">Nigerian format, e.g. 08012345678 or +2348012345678.</span>
+                <span class="form-error" id="driver-phone-error" aria-live="polite"></span>
+              </div>
+              <div class="form-group">
+                <label class="form-label form-label--required" for="driver-licence-number">Driver's licence number</label>
+                <input class="form-input" type="text" id="driver-licence-number" name="licenceNumber" placeholder="e.g. ABC123456" required>
+                <span class="form-error" id="driver-licence-number-error" aria-live="polite"></span>
+              </div>
+              <div class="form-group driver-grid__full">
+                <label class="form-label form-label--required" for="driver-address">Residential address</label>
+                <textarea class="form-textarea" id="driver-address" name="address" rows="3" placeholder="Street, city, state" required></textarea>
+                <span class="form-error" id="driver-address-error" aria-live="polite"></span>
+              </div>
+            </div>
+          </fieldset>
+          <fieldset class="driver-card" id="driver-vehicle">
+            <legend class="driver-card__title">Vehicle Information</legend>
+            <div class="driver-grid driver-grid--2">
+              <div class="form-group">
+                <label class="form-label form-label--required" for="driver-vehicle-make">Vehicle make</label>
+                <input class="form-input" type="text" id="driver-vehicle-make" name="vehicleMake" placeholder="e.g. Toyota" required>
+                <span class="form-error" id="driver-vehicle-make-error" aria-live="polite"></span>
+              </div>
+              <div class="form-group">
+                <label class="form-label form-label--required" for="driver-vehicle-model">Vehicle model</label>
+                <input class="form-input" type="text" id="driver-vehicle-model" name="vehicleModel" placeholder="e.g. Corolla" required>
+                <span class="form-error" id="driver-vehicle-model-error" aria-live="polite"></span>
+              </div>
+              <div class="form-group">
+                <label class="form-label form-label--required" for="driver-vehicle-year">Vehicle year</label>
+                <input class="form-input" type="number" id="driver-vehicle-year" name="vehicleYear" min="1990" max="2030" placeholder="e.g. 2018" required>
+                <span class="form-error" id="driver-vehicle-year-error" aria-live="polite"></span>
+              </div>
+              <div class="form-group">
+                <label class="form-label form-label--required" for="driver-vehicle-plate">Registration / licence plate</label>
+                <input class="form-input" type="text" id="driver-vehicle-plate" name="vehiclePlate" placeholder="e.g. ABC-123XY" required>
+                <span class="form-error" id="driver-vehicle-plate-error" aria-live="polite"></span>
+              </div>
+              <div class="form-group">
+                <label class="form-label form-label--required" for="driver-vehicle-colour">Vehicle colour</label>
+                <input class="form-input" type="text" id="driver-vehicle-colour" name="vehicleColour" placeholder="e.g. Silver" required>
+                <span class="form-error" id="driver-vehicle-colour-error" aria-live="polite"></span>
+              </div>
+              <div class="form-group">
+                <label class="form-label form-label--required" for="driver-vehicle-type">Vehicle type</label>
+                <select class="form-select" id="driver-vehicle-type" name="vehicleType" required>
+                  <option value="">Select a vehicle type</option>
+                  <option value="economy">Economy</option>
+                  <option value="comfort">Comfort</option>
+                  <option value="bike">Bike</option>
+                </select>
+                <span class="form-error" id="driver-vehicle-type-error" aria-live="polite"></span>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset class="driver-card" id="driver-documents">
+            <legend class="driver-card__title">Document Uploads</legend>
+            <p class="driver-card__desc">Upload clear copies of the required documents. Accepted formats: PDF, JPG, JPEG, PNG. Maximum file size: 5 MB per file.</p>
+            <div class="driver-upload-grid">
+              <div class="driver-upload" data-upload="licence">
+                <label class="form-label form-label--required" for="driver-upload-licence">Driver's licence</label>
+                <div class="driver-upload__drop">
+                  <input class="driver-upload__input" type="file" id="driver-upload-licence" name="licenceDoc" accept="application/pdf,image/jpeg,image/png" required>
+                  <div class="driver-upload__meta">
+                    <span class="driver-upload__filename" id="driver-upload-licence-name">No file selected</span>
+                    <span class="driver-upload__size" id="driver-upload-licence-size"></span>
+                  </div>
+                </div>
+                <span class="form-hint">PDF, JPG, JPEG, or PNG — up to 5 MB.</span>
+                <span class="form-error" id="driver-upload-licence-error" aria-live="polite"></span>
+              </div>
+              <div class="driver-upload" data-upload="registration">
+                <label class="form-label form-label--required" for="driver-upload-registration">Vehicle registration document</label>
+                <div class="driver-upload__drop">
+                  <input class="driver-upload__input" type="file" id="driver-upload-registration" name="registrationDoc" accept="application/pdf,image/jpeg,image/png" required>
+                  <div class="driver-upload__meta">
+                    <span class="driver-upload__filename" id="driver-upload-registration-name">No file selected</span>
+                    <span class="driver-upload__size" id="driver-upload-registration-size"></span>
+                  </div>
+                </div>
+                <span class="form-hint">PDF, JPG, JPEG, or PNG — up to 5 MB.</span>
+                <span class="form-error" id="driver-upload-registration-error" aria-live="polite"></span>
+              </div>
+              <div class="driver-upload" data-upload="insurance">
+                <label class="form-label form-label--required" for="driver-upload-insurance">Proof of insurance</label>
+                <div class="driver-upload__drop">
+                  <input class="driver-upload__input" type="file" id="driver-upload-insurance" name="insuranceDoc" accept="application/pdf,image/jpeg,image/png" required>
+                  <div class="driver-upload__meta">
+                    <span class="driver-upload__filename" id="driver-upload-insurance-name">No file selected</span>
+                    <span class="driver-upload__size" id="driver-upload-insurance-size"></span>
+                  </div>
+                </div>
+                <span class="form-hint">PDF, JPG, JPEG, or PNG — up to 5 MB.</span>
+                <span class="form-error" id="driver-upload-insurance-error" aria-live="polite"></span>
+              </div>
+              <div class="driver-upload" data-upload="photo">
+                <label class="form-label form-label--required" for="driver-upload-photo">Driver profile photo</label>
+                <div class="driver-upload__drop">
+                  <input class="driver-upload__input" type="file" id="driver-upload-photo" name="profilePhoto" accept="image/jpeg,image/png" required>
+                  <div class="driver-upload__meta">
+                    <span class="driver-upload__filename" id="driver-upload-photo-name">No file selected</span>
+                    <span class="driver-upload__size" id="driver-upload-photo-size"></span>
+                  </div>
+                </div>
+                <span class="form-hint">JPG or PNG only — up to 5 MB.</span>
+                <span class="form-error" id="driver-upload-photo-error" aria-live="polite"></span>
+              </div>
+            </div>
+          </fieldset>
+          <fieldset class="driver-card">
+            <div class="form-group driver-accuracy">
+              <label class="form-checkbox" for="driver-accuracy-check">
+                <input type="checkbox" id="driver-accuracy-check" name="accuracy" required>
+                <span>I confirm that all the information and documents provided in this application are accurate and belong to me.</span>
+              </label>
+              <span class="form-error" id="driver-accuracy-error" aria-live="polite"></span>
+            </div>
+          </fieldset>
+          <div class="driver-actions">
+            <button type="submit" id="driver-submit" class="btn btn-primary btn-lg btn-block">Submit application</button>
+            <p class="driver-actions__hint">By submitting, you agree that your details will be reviewed by the Gbera team.</p>
+          </div>
+          <div id="driver-success" class="driver-success" hidden aria-live="polite">
+            <div class="driver-success__icon" aria-hidden="true">&#10003;</div>
+            <h2 class="driver-success__title">Validation passed</h2>
+            <p class="driver-success__text">Your driver application details passed all client-side checks and are ready for review. No data was sent to or stored on a server because no backend is connected yet.</p>
+            <button type="button" id="driver-reset" class="btn btn-outline">Start a new application</button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+  <div id="gbera-footer"></div>
+  <script src="../js/utils.js"></script>
+  <script src="../js/components.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/driver-onboarding.js"></script>
+</body>
+</html>
+
