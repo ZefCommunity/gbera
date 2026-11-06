@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ride Tracking — Gbera</title>
+  <meta name="description" content="Track your live trip with Gbera. See your driver, ETA, and ride status in real time.">
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/ride-tracking.css">
+</head>
+<body>
+  <!-- Skip to content (accessibility) -->
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <!-- Shared navbar (rendered by js/components.js) -->
+  <div id="gbera-navbar"></div>
+
+  <main id="main-content">
+    <!-- Page header -->
+    <header class="rt-header section--sm">
+      <div class="container">
+        <h1 class="rt-header__title">Live Trip</h1>
+        <p class="rt-header__subtitle text-muted">Your driver is on the way.</p>
+      </div>
+    </header>
+
+    <!-- Map placeholder — hook for Google Maps / Leaflet integration later -->
+    <section class="rt-map-section section--sm" aria-label="Live trip map">
+      <div class="container">
+        <div class="rt-map" id="live-map" role="region" aria-label="Live map">
+          <div class="map-placeholder">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+              <polyline points="5 7 12 12 19 7"></polyline>
+            </svg>
+            <p>Live map will appear here</p>
+            <p class="text-xs text-muted mt-2">Map integration coming soon</p>
+          </div>
+          <!-- TODO: Initialise Google Maps / Leaflet inside #live-map and render the driver marker + route. -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Trip status banner + ETA -->
+    <section class="rt-status-section section--sm">
+      <div class="container">
+        <div class="rt-status-banner" id="rt-status-banner">
+          <div class="rt-status-indicator">
+            <span class="rt-status-dot" id="rt-status-dot" aria-hidden="true"></span>
+            <span class="rt-status-label" id="trip-status">Driver is on the way</span>
+          </div>
+          <div class="rt-eta">
+            <span class="rt-eta__label">Arriving in</span>
+            <span class="rt-eta__time" id="eta-display" aria-live="polite">4 min</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Driver info card -->
+    <section class="rt-driver-section section--sm">
+      <div class="container">
+        <div class="card rt-driver-card">
+          <div class="card-body">
+            <div class="rt-driver-header flex items-center gap-4">
+              <span class="avatar avatar-lg" role="img" aria-label="Driver avatar — James Daniel" id="rt-driver-avatar">JD</span>
+              <div class="flex-1">
+                <h3 class="rt-driver-name" id="driver-name">James Daniel</h3>
+                <div class="rt-driver-rating flex items-center gap-2" aria-label="Driver rating 4.9 out of 5 based on 124 trips">
+                  <span class="rt-star" aria-hidden="true">★</span>
+                  <span class="rt-star" aria-hidden="true">★</span>
+                  <span class="rt-star" aria-hidden="true">★</span>
+                  <span class="rt-star" aria-hidden="true">★</span>
+                  <span class="rt-star rt-star--muted" aria-hidden="true">★</span>
+                  <span class="rt-rating-text">4.9 · 124 trips</span>
+                </div>
+              </div>
+            </div>
+            <hr class="divider mt-4 mb-4">
+            <div class="rt-driver-details grid gap-4">
+              <div class="rt-detail">
+                <span class="rt-detail__label text-xs text-muted">Vehicle model</span>
+                <span class="rt-detail__value" id="driver-vehicle">Toyota Corolla</span>
+              </div>
+              <div class="rt-detail">
+                <span class="rt-detail__label text-xs text-muted">Vehicle colour</span>
+                <span class="rt-detail__value" id="driver-colour">White</span>
+              </div>
+              <div class="rt-detail rt-detail--full">
+                <span class="rt-detail__label text-xs text-muted">Plate number</span>
+                <span class="rt-detail__value" id="driver-plate">LAG · 789 XYZ</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Action buttons -->
+    <section class="rt-actions-section section--sm">
+      <div class="container">
+        <div class="rt-actions" id="rt-actions">
+          <a href="tel:+2348012345678" class="btn btn-primary btn-lg" aria-label="Call driver James Daniel" id="rt-call-driver">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 0 7h3a2 2 0 0 1 2 1.72z"></path>
+            </svg>
+            <span>Call driver</span>
+          </a>
+          <button type="button" class="btn btn-danger btn-lg" data-modal-open="cancel-modal" id="rt-cancel-ride">
+            Cancel ride
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cancelled state (shown after the user confirms cancellation) -->
+    <div class="rt-cancelled-state hide" id="rt-cancelled-state" role="status" aria-live="polite">
+      <div class="card">
+        <div class="card-body text-center">
+          <div class="rt-cancelled-icon" aria-hidden="true">✖</div>
+          <h3 id="rt-cancelled-heading">Ride cancelled</h3>
+          <p class="text-muted">Your ride has been cancelled. You can book a new ride anytime.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Shared footer (rendered by js/components.js — includes a Ride Tracking link) -->
+  <div id="gbera-footer"></div>
+
+  <!-- Cancel confirmation modal -->
+  <div class="modal-backdrop" data-modal-backdrop="cancel-modal"></div>
+  <div class="modal" id="cancel-modal" aria-hidden="true" role="dialog" aria-labelledby="cancel-modal-title">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="cancel-modal-title">Cancel ride?</h3>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to cancel this ride?</p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-ghost" data-modal-close>Keep ride</button>
+        <button class="btn btn-danger" id="confirm-cancel-btn" data-modal-close>Yes, cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="../js/utils.js"></script>
+  <script src="../js/components.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/ride-tracking.js"></script>
+</body>
+</html>
