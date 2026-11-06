@@ -1,0 +1,239 @@
+/* ==========================================================================
+   ride-tracking.css — Page-specific styles for the Ride Tracking page.
+   Builds on the shared foundation (css/styles.css). Uses design tokens.
+   ========================================================================== */
+
+/* ---------- Skip link ---------- */
+.skip-link {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.skip-link:focus {
+  position: fixed;
+  top: var(--space-4);
+  left: var(--space-4);
+  width: auto;
+  height: auto;
+  padding: var(--space-2) var(--space-4);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-primary);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-md);
+  z-index: var(--z-tooltip);
+  text-decoration: none;
+}
+
+/* ---------- Page header ---------- */
+.rt-header {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.rt-header__title {
+  margin-bottom: var(--space-1);
+}
+
+.rt-header__subtitle {
+  margin-bottom: 0;
+}
+
+/* ---------- Map placeholder ---------- */
+/* Large map area (~55-60% of screen height on mobile). Hook for a real map. */
+.rt-map {
+  position: relative;
+  min-height: 55vh;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  background-color: var(--color-neutral-100);
+}
+
+@media (min-width: 768px) {
+  .rt-map {
+    min-height: 420px;
+  }
+}
+
+.rt-map .map-placeholder {
+  border: none;
+  border-radius: 0;
+  height: 100%;
+  padding: var(--space-8) var(--space-4);
+  flex-direction: column;
+}
+
+/* ---------- Trip status banner ---------- */
+.rt-status-banner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  align-items: flex-start;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4) var(--space-5);
+  box-shadow: var(--shadow-sm);
+}
+
+@media (min-width: 640px) {
+  .rt-status-banner {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.rt-status-indicator {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.rt-status-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-success);
+  box-shadow: 0 0 0 4px var(--color-success-light);
+}
+
+.rt-status-label {
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-neutral-800);
+}
+
+/* Status colour variants (applied via JS based on trip status) */
+.rt-status-dot--arrived {
+  background-color: var(--color-primary);
+  box-shadow: 0 0 0 4px var(--color-primary-light);
+}
+
+.rt-status-dot--in-progress {
+  background-color: var(--color-accent);
+  box-shadow: 0 0 0 4px var(--color-accent-light);
+}
+
+.rt-eta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.rt-eta__label {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+.rt-eta__time {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-extrabold);
+  color: var(--color-primary);
+  line-height: 1;
+}
+
+/* ---------- Driver info card ---------- */
+.rt-driver-card {
+  border: 1px solid var(--color-border);
+}
+
+.rt-driver-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.rt-driver-name {
+  margin-bottom: var(--space-1);
+}
+
+.rt-driver-rating {
+  font-size: var(--font-size-sm);
+}
+
+.rt-star {
+  color: var(--color-accent);
+}
+
+.rt-star--muted {
+  color: var(--color-neutral-200);
+}
+
+.rt-rating-text {
+  color: var(--color-text-muted);
+}
+
+.rt-driver-details {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-4);
+}
+
+@media (min-width: 640px) {
+  .rt-driver-details {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.rt-detail--full {
+  grid-column: 1 / -1;
+}
+
+.rt-detail__label {
+  display: block;
+}
+
+.rt-detail__value {
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-neutral-800);
+}
+
+/* ---------- Action buttons ---------- */
+.rt-actions {
+  display: flex;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+@media (max-width: 639px) {
+  .rt-actions {
+    flex-direction: column;
+  }
+
+  .rt-actions .btn {
+    width: 100%;
+  }
+}
+
+/* ---------- Cancelled state ---------- */
+.rt-cancelled-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-danger-light);
+  color: var(--color-danger);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  line-height: 1;
+  margin-bottom: var(--space-4);
+}
+
+.rt-cancelled-state .card-body {
+  text-align: center;
+  padding: var(--space-8) var(--space-5);
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .rt-eta__time {
+    transition: none;
+  }
+}
